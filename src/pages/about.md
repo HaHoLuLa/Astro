@@ -1,3 +1,15 @@
+---
+layout: "@/layouts/Layout.astro"
+---
+# Hello World!
+
+1. 안녕
+1. 하세요
+
+```astro
+---
+import "../styles/global.css";
+---
 <!doctype html>
 <html lang="ko">
 	<head>
@@ -11,3 +23,8 @@
 		<slot />
 	</body>
 </html>
+```
+
+| 안녕 | 세상아 |
+| -- | -- |
+| ㅁ | ㅁ |
