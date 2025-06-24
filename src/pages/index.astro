@@ -1,7 +1,10 @@
 ---
 import "@/styles/global.css";
-// import Welcome from '../components/Welcome.astro';
-import Welcome from '@/components/Welcome.tsx';
+import ReactWelcome from '@/components/ReactWelcome.tsx';
+// import Welcome from '@/components/AstroWelcome.astro';
+import VueWelcome from "@/components/VueWelcome.vue";
+import SvelteWelcome from "@/components/SvelteWelcome.svelte";
+import MarkdownWelcome from "@/components/MarkdownWelcome.md";
 // import Welcome from '../components/Welcome.md';
 import Layout from '@/layouts/Layout.astro';
 import { ModeToggle } from "@/components/ModeToggle";
@@ -30,5 +33,8 @@ import { ModeToggle } from "@/components/ModeToggle";
 
 <Layout>
 	<ModeToggle client:load />
-	<Welcome client:visible />
+	<ReactWelcome client:visible />
+	<VueWelcome client:visible />
+	<SvelteWelcome client:visible />
+	<MarkdownWelcome client:visible />
 </Layout>
