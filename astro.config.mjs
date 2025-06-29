@@ -33,5 +33,10 @@ export default defineConfig({
     mode: 'standalone'
   }),
 
-  output: 'server'
+  output: 'server',
+
+  server: {
+    host: true,
+    port: 3000
+  }
 });
