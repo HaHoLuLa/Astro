@@ -1,16 +1,9 @@
 ---
-import "@/styles/global.css";
-import ReactWelcome from '@/components/ReactWelcome.tsx';
-// import Welcome from '@/components/AstroWelcome.astro';
-import VueWelcome from "@/components/VueWelcome.vue";
-import SvelteWelcome from "@/components/SvelteWelcome.svelte";
-import MarkdownWelcome from "@/components/MarkdownWelcome.md";
-// import Welcome from '../components/Welcome.md';
 import Layout from '@/layouts/Layout.astro';
-import { ModeToggle } from "@/components/ModeToggle";
+import { Code } from 'astro:components';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const user = await Astro.session?.get('user');
+console.log(user)
 ---
 <script is:inline>
 	const getThemePreference = () => {
@@ -31,10 +24,8 @@ import { ModeToggle } from "@/components/ModeToggle";
 	}
 </script>
 
-<Layout>
-	<ModeToggle client:load />
-	<ReactWelcome client:visible />
-	<VueWelcome client:visible />
-	<SvelteWelcome client:visible />
-	<MarkdownWelcome client:visible />
+<Layout title="HaHoLuLa">
+	<h1>test</h1>
+	<Code code='const foo = "bar";' lang={"js"} />
+	<button>{user}</button>
 </Layout>
