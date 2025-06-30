@@ -1,31 +1,42 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { Code } from 'astro:components';
+import Login from '@/components/Login.tsx';
+import Logout from '@/components/Logout.tsx';
 
 const user = await Astro.session?.get('user');
-console.log(user)
+import { ModeToggle } from '@/components/ModeToggle';
 ---
-<script is:inline>
-	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme');
-		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
- 
-	if (typeof localStorage !== 'undefined') {
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		});
-		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-	}
-</script>
 
 <Layout title="HaHoLuLa">
-	<h1>test</h1>
-	<Code code='const foo = "bar";' lang={"js"} />
-	<button>{user}</button>
+	<div class="w-11/12 md:w-2/3 mx-auto">
+		<div class="fixed top-0 right-0">
+			<ModeToggle client:load />
+		</div>
+		<!-- <h1>test</h1>
+		<Code code={`def generate_grep_commands(date_suffix: str):
+    filename = f"postgresql-2025-06-{date_suffix}"
+
+    commands = {
+        "조회쿼리": f'grep "fisnet" {filename} | grep "명령 구문: SELECT (CASE" | grep "s01.tpro" > /tmp/조회쿼리{date_suffix}.txt',
+        "조회쿼리_3줄": f'grep -A 3 "fisnet" {filename} | grep -A 3 "명령 구문: SELECT (CASE" | grep -A 3 "s01.tpro" > /tmp/조회쿼리{date_suffix}1.txt',
+        "전체로그": f'grep "< 2025-06-{date_suffix} " {filename} | grep "KST" > /tmp/전체로그{date_suffix}.txt',
+        "오류쿼리": f'grep -A 3 "fisnet" {filename} | grep -A 3 "오류" > /tmp/오류쿼리{date_suffix}1.txt'
+    }
+
+    return commands
+
+# 예시 사용
+date_input = input("조회할 날짜 (예: 24): ")
+commands = generate_grep_commands(date_input)
+
+for desc, cmd in commands.items():
+    print(f"# {desc}\n{cmd}\n")
+
+`} lang={"py"} class="p-5 rounded-2xl"/> -->
+		<!-- <p class="text-gray-500 dark:text-gray-400">
+			{user ? `환영합니다, ${user}!` : '로그인하지 않았습니다.'}
+		</p> -->
+		{!user ? <Login client:visible /> : <Logout client:visible />}
+	</div>
 </Layout>

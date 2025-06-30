@@ -38,13 +38,13 @@ export function ModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setThemeState("theme-light")}>
-          Light
+          라이트
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setThemeState("dark")}>
-          Dark
+          다크
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setThemeState("system")}>
-          System
+          시스템
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
