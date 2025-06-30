@@ -18,7 +18,13 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 1000
+      }
+    },
   },
 
   integrations: [react(), mdx(), vue(), svelte(), db()],
