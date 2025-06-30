@@ -19,12 +19,6 @@ import node from '@astrojs/node';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    server: {
-      watch: {
-        usePolling: true,
-        interval: 1000
-      }
-    },
   },
 
   integrations: [react(), mdx(), vue(), svelte(), db()],
