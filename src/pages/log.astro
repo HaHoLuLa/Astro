@@ -1,0 +1,13 @@
+---
+import { db, Log as logDB } from "astro:db"
+
+const logs = await db.select().from(logDB)
+---
+
+{logs.map(log => (
+  <div class="log-entry">
+    <p><strong>ID:</strong> {log.id}</p>
+    <p><strong>Log:</strong> {log.logs}</p>
+    <p><strong>Timestamp:</strong> {new Date(log.timestamp).toLocaleString()}</p>
+  </div>
+))}

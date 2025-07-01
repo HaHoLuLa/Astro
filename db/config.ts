@@ -8,7 +8,15 @@ const User = defineTable({
   }
 })
 
+const Log = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    logs: column.text(),
+    timestamp: column.date()
+  }
+});
+
 // https://astro.build/db/config
 export default defineDb({
-  tables: { User }
+  tables: { User, Log }
 });

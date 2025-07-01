@@ -19,6 +19,12 @@ import node from '@astrojs/node';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      }
+    }
   },
 
   integrations: [react(), mdx(), vue(), svelte(), db()],
